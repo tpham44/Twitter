@@ -13,7 +13,7 @@ class Tweet: NSObject {
     var user: User?
     var text: String?
     var createdAtString: String?
-    var createAt: NSDate?
+    var createdAt: NSDate?
     var Time: String!
     var PassedTime: Int?
     var retweetCount: Int?
