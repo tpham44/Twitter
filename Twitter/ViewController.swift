@@ -13,6 +13,9 @@ import BDBOAuth1Manager
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,25 +28,17 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onLogin(sender: AnyObject) {
-        // access to twitterClient
-        TwitterClient.sharedInstance.requestSerializer.removeAccessToken()
-        // first step get request token
         
-        TwitterClient.sharedInstance.fetchRequestTokenWithPath(
-            "oauth/request_token",
-            method: "GET", callbackURL: NSURL(string: "cputwitterdemo://oauth"),
-            scope: nil,
-            success:{
-                (requestToken: BDBOAuth1Credential!) -> Void in
-                    print ("Got request token ViewController swift") // got token back will allow me to send a user to that twitter to authentication mobil page.
-            
-            //Build authentication URL since I got the token
-            let authURL = NSURL(string:"https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)")
+        
+        TwitterClient.sharedInstance.loginWithCompletion(){
+            (user: User?, error: NSError?) in
+            if user != nil{
                 
-            UIApplication.sharedApplication().openURL(authURL!)
-            
-        }) { (error: NSError!) -> Void in
-                print("failt to get token")
+                //perform segue
+                self.performSegueWithIdentifier("loginSegue", sender: self)
+            } else{
+                //handle login error
+            }
             
         }
     }
