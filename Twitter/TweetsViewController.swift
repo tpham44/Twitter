@@ -62,6 +62,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetsTableViewCell", forIndexPath: indexPath) as! TweetsTableViewCell
         cell.tweet = tweets![indexPath.row]
         cell.time.text = tweets![indexPath.row].Time!
+        cell.userHandle.text = tweets![indexPath.row].user!.screenname!
+        
+        
         return cell
     }
     

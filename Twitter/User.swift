@@ -24,10 +24,6 @@ class User: NSObject {
     var dictionary: NSDictionary
   
     
-    
-
-    
-    
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         
@@ -35,8 +31,8 @@ class User: NSObject {
         screenname = dictionary ["screen_name"] as? String
         profileImageUrl = dictionary["profile_image_url"] as? String
         tagline = dictionary["description"] as? String
-        
     }
+    
     func logout() {
         // clear user info and send notification that logout happened
         User.currentUser = nil

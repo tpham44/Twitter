@@ -7,16 +7,18 @@
 //
 
 import UIKit
-import BDBOAuth1Manager
-//import BDBOAuthToken
+
+
+
 
 @UIApplicationMain
+// AppDelegate is a main which will call other view controller
+// ViewController is my first login view which needs to be called first
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var storyboard = UIStoryboard(name: "Main", bundle: nil)
-    
-    
+
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,13 +28,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if User.currentUser != nil {
             // Go to the Logged In screen
             print("Current user detected: \(User.currentUser?.name)")
-            let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
+            // Call ViewController.swift @ first run for User Login
+        
+            let vc = storyboard.instantiateViewControllerWithIdentifier("ViewController") as UIViewController
             window?.rootViewController = vc
             
         }
         
         return true
 
+    }
+    
+    
+    func userDidLogout() {
+        let vc = storyboard.instantiateInitialViewController()!
+        //        let vc = storyboard.instantiateViewControllerWithIdentifier("ViewController") as UIViewController
+        window?.rootViewController = vc
     }
 
     func applicationWillResignActive(application: UIApplication) {

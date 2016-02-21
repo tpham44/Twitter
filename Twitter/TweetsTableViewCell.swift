@@ -13,11 +13,11 @@ class TweetsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
-    
     @IBOutlet weak var userHandle: UILabel!
+    
+    @IBOutlet weak var tweetContentText: UILabel!
     @IBOutlet weak var time: UILabel!
 
-    @IBOutlet weak var tweetContentText: UILabel!
     
     @IBOutlet weak var retweetCount: UILabel!
     @IBOutlet weak var likesCount: UILabel!
@@ -48,8 +48,17 @@ class TweetsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        userName.preferredMaxLayoutWidth = userName.frame.size.width
+        profileImage.layer.cornerRadius = 4
+        profileImage.clipsToBounds = true
+        
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        userName.preferredMaxLayoutWidth = userName.frame.size.width
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
