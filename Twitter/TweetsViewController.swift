@@ -10,15 +10,15 @@ import UIKit
 
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
+    var tweets: [Tweet]?
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tweets: [Tweet]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
@@ -35,7 +35,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,7 +46,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         User.currentUser!.logout()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-   
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tweets = self.tweets {
@@ -55,7 +55,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         return 0
         
     }
-   
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
@@ -68,16 +68,16 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-
-
-
+    
+    
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
 }

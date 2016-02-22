@@ -10,21 +10,19 @@ import UIKit
 
 class TweetsTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userHandle: UILabel!
     
     @IBOutlet weak var tweetContentText: UILabel!
     @IBOutlet weak var time: UILabel!
-
     
-    @IBOutlet weak var retweetCount: UILabel!
-    @IBOutlet weak var likesCount: UILabel!
-    
+    @IBOutlet weak var RetweetButton: UIButton!
+    @IBOutlet weak var LikeButton: UIButton!
+    @IBOutlet weak var RetweetCountLabel: UILabel!
+    @IBOutlet weak var LikesCountLabel: UILabel!
     
     var tweetID: String = ""
-    
     var tweet: Tweet! {
         didSet {
             tweetContentText.text = tweet.text
@@ -36,33 +34,61 @@ class TweetsTableViewCell: UITableViewCell {
             } else{
                 print("No profile image found")
             }
-            retweetCount.text = String(tweet.retweetCount!)
-            likesCount.text = String(tweet.likeCount!)
+            RetweetCountLabel.text = String(tweet.retweetCount!)
+            LikesCountLabel.text = String(tweet.likeCount!)
             tweetID = tweet.id
-            retweetCount.text! == "0" ? (retweetCount.hidden = true) : (retweetCount.hidden = false)
-            likesCount.text! == "0" ? (likesCount.hidden = true) : (likesCount.hidden = false)
+            RetweetCountLabel.text! == "0" ? (RetweetCountLabel.hidden = true) : (RetweetCountLabel.hidden = false)
+            LikesCountLabel.text! == "0" ? (LikesCountLabel.hidden = true) : (LikesCountLabel.hidden = false)
         }
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         userName.preferredMaxLayoutWidth = userName.frame.size.width
         profileImage.layer.cornerRadius = 4
         profileImage.clipsToBounds = true
-        
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         userName.preferredMaxLayoutWidth = userName.frame.size.width
     }
     
+    
+    @IBAction func OnTweet(sender: AnyObject) {
+        
+        TwitterClient.sharedInstance.retweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
+            
+            if self.RetweetCountLabel.text! > "0" {
+                self.RetweetCountLabel.text = String(self.tweet.retweetCount! + 1)
+            } else {
+                self.RetweetCountLabel.hidden = false
+                self.RetweetCountLabel.text = String(self.tweet.retweetCount! + 1)
+            }
+        })
+    }
+    
+    
+    
+    @IBAction func OnLike(sender: AnyObject) {
+        TwitterClient.sharedInstance.likeTweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
+            
+            if self.LikesCountLabel.text! > "0" {
+                self.LikesCountLabel.text = String(self.tweet.likeCount! + 1)
+            } else {
+                self.LikesCountLabel.hidden = false
+                self.LikesCountLabel.text = String(self.tweet.likeCount! + 1)
+            }
+        })
+        
+    }
+    
+    
+    
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
+    
 }
