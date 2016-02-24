@@ -55,6 +55,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="121" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kWu-0O-bgs">
                                 <rect key="frame" x="0.0" y="37" width="320" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.73405538671542347" green="0.87491531109924381" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetsTableViewCell" rowHeight="121" id="YX1-Ca-CjP" customClass="TweetsTableViewCell" customModule="Twitter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="121"/>
@@ -94,16 +95,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdz-Jf-vTW" userLabel="Likes Count Label">
-                                                    <rect key="frame" x="254" y="91" width="19" height="18"/>
+                                                    <rect key="frame" x="236" y="89" width="71" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="19" id="Jyh-wb-glH"/>
+                                                        <constraint firstAttribute="width" constant="71" id="Jyh-wb-glH"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyW-Tu-DOz" userLabel="Retweet Count Label">
-                                                    <rect key="frame" x="157" y="91" width="16" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyW-Tu-DOz" userLabel="Retweet Count Label">
+                                                    <rect key="frame" x="137" y="89" width="58" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -132,19 +133,19 @@
                                                 <constraint firstItem="JSp-cF-aQE" firstAttribute="firstBaseline" secondItem="gQD-L1-sDG" secondAttribute="firstBaseline" id="1bA-xV-C4D"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="fUQ-xN-yk0" secondAttribute="bottom" constant="11.5" id="1rd-xz-xxG"/>
                                                 <constraint firstItem="fUQ-xN-yk0" firstAttribute="leading" secondItem="ijn-hP-6Av" secondAttribute="leadingMargin" constant="7" id="2VO-IZ-y5T"/>
-                                                <constraint firstAttribute="trailing" secondItem="bdz-Jf-vTW" secondAttribute="trailing" constant="47" id="6RR-6k-qbp"/>
-                                                <constraint firstItem="bdz-Jf-vTW" firstAttribute="leading" secondItem="JSp-cF-aQE" secondAttribute="trailing" constant="19" id="7MQ-Bq-ujD"/>
-                                                <constraint firstAttribute="bottom" secondItem="bdz-Jf-vTW" secondAttribute="bottom" constant="11.5" id="9yv-44-OwF"/>
+                                                <constraint firstAttribute="trailing" secondItem="bdz-Jf-vTW" secondAttribute="trailing" constant="13" id="6RR-6k-qbp"/>
+                                                <constraint firstItem="bdz-Jf-vTW" firstAttribute="leading" secondItem="JSp-cF-aQE" secondAttribute="trailing" constant="1" id="7MQ-Bq-ujD"/>
+                                                <constraint firstAttribute="bottom" secondItem="bdz-Jf-vTW" secondAttribute="bottom" constant="13.5" id="9yv-44-OwF"/>
                                                 <constraint firstItem="WZJ-lW-k0K" firstAttribute="firstBaseline" secondItem="Vvp-FF-Ywi" secondAttribute="firstBaseline" id="Bat-Wd-TzC"/>
                                                 <constraint firstItem="Vvp-FF-Ywi" firstAttribute="top" secondItem="fUQ-xN-yk0" secondAttribute="top" id="FIr-4F-EGn"/>
                                                 <constraint firstItem="Vvp-FF-Ywi" firstAttribute="baseline" secondItem="L8D-vA-3zA" secondAttribute="firstBaseline" id="HqK-Gp-Qiy"/>
                                                 <constraint firstItem="jFx-OO-nhW" firstAttribute="top" secondItem="Vvp-FF-Ywi" secondAttribute="bottom" constant="3" id="Ihp-oB-MRm"/>
-                                                <constraint firstItem="MyW-Tu-DOz" firstAttribute="leading" secondItem="gQD-L1-sDG" secondAttribute="trailing" constant="21" id="Jog-Mb-Tzr"/>
+                                                <constraint firstItem="MyW-Tu-DOz" firstAttribute="leading" secondItem="gQD-L1-sDG" secondAttribute="trailing" constant="1" id="Jog-Mb-Tzr"/>
                                                 <constraint firstItem="MyW-Tu-DOz" firstAttribute="baseline" secondItem="bdz-Jf-vTW" secondAttribute="baseline" id="K1j-Wg-gka"/>
                                                 <constraint firstItem="gQD-L1-sDG" firstAttribute="top" secondItem="jFx-OO-nhW" secondAttribute="bottom" constant="8" id="Q1a-je-tiQ"/>
                                                 <constraint firstItem="Vvp-FF-Ywi" firstAttribute="bottom" secondItem="WZJ-lW-k0K" secondAttribute="bottom" id="Sjd-aW-y09"/>
-                                                <constraint firstAttribute="bottom" secondItem="bdz-Jf-vTW" secondAttribute="bottom" constant="11.5" id="TEP-Vo-QaF"/>
-                                                <constraint firstItem="bdz-Jf-vTW" firstAttribute="top" secondItem="jFx-OO-nhW" secondAttribute="bottom" constant="10" id="VeO-ah-Zge"/>
+                                                <constraint firstAttribute="bottom" secondItem="bdz-Jf-vTW" secondAttribute="bottom" constant="13.5" id="TEP-Vo-QaF"/>
+                                                <constraint firstItem="bdz-Jf-vTW" firstAttribute="top" secondItem="jFx-OO-nhW" secondAttribute="bottom" constant="8" id="VeO-ah-Zge"/>
                                                 <constraint firstItem="gQD-L1-sDG" firstAttribute="top" secondItem="jFx-OO-nhW" secondAttribute="bottom" constant="8" id="Vwe-BN-WJz"/>
                                                 <constraint firstItem="fUQ-xN-yk0" firstAttribute="centerY" secondItem="jFx-OO-nhW" secondAttribute="centerY" id="VyN-oJ-Ih5"/>
                                                 <constraint firstItem="WZJ-lW-k0K" firstAttribute="baseline" secondItem="L8D-vA-3zA" secondAttribute="baseline" id="XUH-EJ-mTq"/>
@@ -156,25 +157,22 @@
                                                 <constraint firstAttribute="bottom" secondItem="gQD-L1-sDG" secondAttribute="bottom" constant="13.5" id="n4Q-mA-g4H"/>
                                                 <constraint firstItem="JSp-cF-aQE" firstAttribute="top" secondItem="gQD-L1-sDG" secondAttribute="top" id="ogJ-3d-j91"/>
                                                 <constraint firstItem="L8D-vA-3zA" firstAttribute="trailing" secondItem="jFx-OO-nhW" secondAttribute="trailing" id="ov8-Dh-FVF"/>
-                                                <constraint firstItem="bdz-Jf-vTW" firstAttribute="trailing" secondItem="jFx-OO-nhW" secondAttribute="trailing" constant="-39" id="p2l-cK-Brc"/>
+                                                <constraint firstItem="bdz-Jf-vTW" firstAttribute="trailing" secondItem="jFx-OO-nhW" secondAttribute="trailing" constant="-5" id="p2l-cK-Brc"/>
                                                 <constraint firstItem="Vvp-FF-Ywi" firstAttribute="leading" secondItem="jFx-OO-nhW" secondAttribute="leading" id="p4z-Le-TWd"/>
-                                                <constraint firstAttribute="trailing" secondItem="bdz-Jf-vTW" secondAttribute="trailing" constant="47" id="quB-Yo-61P"/>
+                                                <constraint firstAttribute="trailing" secondItem="bdz-Jf-vTW" secondAttribute="trailing" constant="13" id="quB-Yo-61P"/>
                                                 <constraint firstItem="Vvp-FF-Ywi" firstAttribute="top" secondItem="ijn-hP-6Av" secondAttribute="topMargin" id="rQC-oZ-nM6"/>
                                                 <constraint firstItem="JSp-cF-aQE" firstAttribute="baseline" secondItem="gQD-L1-sDG" secondAttribute="baseline" id="rTE-ct-Oc8"/>
                                                 <constraint firstItem="L8D-vA-3zA" firstAttribute="trailing" secondItem="ijn-hP-6Av" secondAttribute="trailingMargin" id="sDR-hG-Xs8"/>
                                                 <constraint firstItem="Vvp-FF-Ywi" firstAttribute="leading" secondItem="fUQ-xN-yk0" secondAttribute="trailing" constant="15" id="tHZ-dk-Vdl"/>
-                                                <constraint firstItem="bdz-Jf-vTW" firstAttribute="top" secondItem="jFx-OO-nhW" secondAttribute="bottom" constant="10" id="tum-Ov-1HT"/>
+                                                <constraint firstItem="bdz-Jf-vTW" firstAttribute="top" secondItem="jFx-OO-nhW" secondAttribute="bottom" constant="8" id="tum-Ov-1HT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="LikeButton" destination="JSp-cF-aQE" id="idG-Bi-xtG"/>
                                             <outlet property="LikesCountLabel" destination="bdz-Jf-vTW" id="Y3Q-Ls-KYc"/>
-                                            <outlet property="OnLike" destination="JSp-cF-aQE" id="MFm-h0-iCr"/>
                                             <outlet property="RetweetButton" destination="gQD-L1-sDG" id="NHG-QG-4m1"/>
                                             <outlet property="RetweetCountLabel" destination="MyW-Tu-DOz" id="GZO-7v-OON"/>
-                                            <outlet property="likesCount" destination="bdz-Jf-vTW" id="KW9-rt-jky"/>
                                             <outlet property="profileImage" destination="fUQ-xN-yk0" id="AXh-cs-r6m"/>
-                                            <outlet property="retweetCount" destination="MyW-Tu-DOz" id="gr7-Gb-05R"/>
                                             <outlet property="time" destination="L8D-vA-3zA" id="LEA-Oy-dYO"/>
                                             <outlet property="tweetContentText" destination="jFx-OO-nhW" id="Bgs-tq-s2U"/>
                                             <outlet property="userHandle" destination="WZJ-lW-k0K" id="mjK-P7-8VX"/>

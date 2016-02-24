@@ -43,7 +43,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     @IBAction func onLogout(sender: AnyObject) {
-        User.currentUser!.logout()
+        if(User.currentUser != nil) {
+            User.currentUser!.logout()
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
