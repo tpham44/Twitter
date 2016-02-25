@@ -58,41 +58,69 @@ class TweetsTableViewCell: UITableViewCell {
     }
     
     
+    
+    
+    
     @IBAction func OnTweet(sender: AnyObject) {
         
-        TwitterClient.sharedInstance.retweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
-          
-            if self.RetweetCountLabel.text! > "0" {
-                self.RetweetCountLabel.text = String(self.tweet.retweetCount! + 1)
+        TwitterClient.sharedInstance.retweet(Int(tweetID)!, params: nil, completion: { (error) -> () in
+            //return boolean true or false from R isRetweetCountLabel
+            
+            if self.isRetweetButton {
+                self.RetweetCountLabel.text = String(self.tweet.retweetCount!)
+                self.RetweetButton.setImage(UIImage(named: "retweet-acction"), forState: UIControlState.Normal)
+                self.isRetweetButton = false
+                    self.tweet.retweetCount!--  /*decrement*/
+                    self.RetweetCountLabel.textColor = UIColor.grayColor()
+            
+                if self.RetweetCountLabel.text == "0" {
+                    self.RetweetCountLabel.hidden = true
+                }
+            
+            
             } else {
-                self.RetweetCountLabel.hidden = false
-                self.RetweetCountLabel.text = String(self.tweet.retweetCount! + 1)
+            self.RetweetButton.setImage (UIImage(named: "retweet"), forState: UIControlState.Normal)
+                self.isRetweetButton = true
+                self.tweet.retweetCount!++ /*ncr*/
+            //self.LikesCountLabel.hidden = false
+                self.RetweetCountLabel.textColor = UIColor (red: 0.8471, green: 0.1608, blue: 0.2039, alpha: 1.0) /* #d82934 */
+            
+                if self.RetweetCountLabel.text == "0" {
+                      self.RetweetCountLabel.hidden  = false
             }
-        })
-         self.RetweetCountLabel.text = "\(self.tweet.retweetCount)"
-    }
-    
+        }
+
+       
+         self.RetweetCountLabel.text = "\(self.tweet.retweetCount!)"
+    })
+
+}
+
+
     // This function is not working messages said Coundn't retweet
     
     @IBAction func OnLike(sender: AnyObject) {
-        //TwitterClient.sharedInstance.likeTweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
+        TwitterClient.sharedInstance.likeTweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
  
             if self.islikeButton {
                 
-                self.LikesCountLabel.text = String(self.tweet.likeCount!);
+                self.LikesCountLabel.text = String(self.tweet.likeCount!)
+                //print(self.tweet.likeCount)
                 self.LikeButton.setImage(UIImage(named: "like-action"), forState: UIControlState.Normal)
+                
                 self.islikeButton = false
-                self.tweet.likeCount!-- //dec
-                self.LikesCountLabel.textColor = UIColor.grayColor()
+                    self.tweet.likeCount!-- //dec
+                    self.LikesCountLabel.textColor = UIColor.grayColor()
                 
                 if self.LikesCountLabel.text == "0" {
                     self.LikesCountLabel.hidden = true
                 }
                 
-            } else{
+            } else {
                 self.LikeButton.setImage(UIImage(named: "Like"), forState: UIControlState.Normal)
                 self.islikeButton = true
                 self.tweet.likeCount!++ //ncr
+                //self.LikesCountLabel.hidden = false
                 self.LikesCountLabel.textColor = UIColor(red: 0.8471, green: 0.1608, blue: 0.2039, alpha: 1.0) /* #d82934 */
                 
                 if self.LikesCountLabel.text == "0" {
@@ -100,9 +128,9 @@ class TweetsTableViewCell: UITableViewCell {
                 }
             }
        
-            self.LikesCountLabel.text = "\(self.tweet.likeCount)"
-    
-        }
+            self.LikesCountLabel.text = "\(self.tweet.likeCount!)"
+        })
+    }
     
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -111,3 +139,5 @@ class TweetsTableViewCell: UITableViewCell {
     }
     
 }
+
+
