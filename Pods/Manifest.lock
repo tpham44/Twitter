@@ -16,13 +16,22 @@ PODS:
     - AFNetworking/NSURLSession
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
+  - DOFavoriteButton (0.0.4)
+  - MBProgressHUD (0.9.2)
+  - UIScrollView-InfiniteScroll (0.7.3)
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
+  - DOFavoriteButton
+  - MBProgressHUD
+  - UIScrollView-InfiniteScroll
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
+  DOFavoriteButton: 866e15af173d2dd5233971a1f657a5f31d2491d5
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  UIScrollView-InfiniteScroll: b6c7d6d155dca7f9c5dd43813ecffeb301b3d50c
 
 COCOAPODS: 0.39.0

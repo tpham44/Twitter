@@ -18,7 +18,7 @@ class Tweet: NSObject {
     var PassedTime: Int?
     var retweetCount: Int?
     var id: String
-    var likeCount: Int?
+    var likeCount: Int? // favCount
 
     
     
@@ -34,6 +34,7 @@ class Tweet: NSObject {
     
         retweetCount = dictionary["retweet_count"] as? Int
         likeCount = dictionary["favorite_count"] as? Int
+        //favorite count
         let now = NSDate()
         
         let then = createdAt
@@ -66,5 +67,11 @@ class Tweet: NSObject {
         
         return tweets
     }
-
+    
+    class func tweetAsDictionary(dict: NSDictionary) -> Tweet {
+        let tweet = Tweet(dictionary: dict)
+        return tweet
+    }
+    
+ 
 }

@@ -8,32 +8,74 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+protocol MainTweetDelegate{
+    func passingCellData(omgTweet: Tweet)
+}
+
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,UIScrollViewDelegate {
+    
+    var delegate:MainTweetDelegate?
     
     var tweets: [Tweet]?
     
+    var refreshControl: UIRefreshControl!
+    let delay = 3.0 * Double(NSEC_PER_SEC)
+    
+    var isMoreDataLoading = false
+    
     @IBOutlet weak var tableView: UITableView!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        tableView.dataSource = self
+        
+        //adding the tableview
         tableView.delegate = self
+        tableView.dataSource = self
+        
+        //here code for pull to refresh
+        refreshControl = UIRefreshControl()
+        tableView.addSubview(refreshControl)
+        
+        
+        
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        
+        //ended code for pull to refresh
+        
+        //for the autolayout of the tableview row
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 150
+        tableView.estimatedRowHeight = 120
         
-        // Load additional view
         
-        tableView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         
+        tableView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
         TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
             self.tweets = tweets
-            self.tableView.reloadData()}
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
     }
     
+    //finishing pull to refresh
+    func delay(delay:Double, closure:() -> ()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    
+    func onRefresh() {
+        delay(1, closure: {
+            self.refreshControl.endRefreshing()
+        })
+    }
+    
+    //finished pull to refresh
     
     
     override func didReceiveMemoryWarning() {
@@ -41,37 +83,57 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func onLogout(sender: AnyObject) {
-        if(User.currentUser != nil) {
-            User.currentUser!.logout()
-        }
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
+    //tvds (tableview data source implementation)
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let tweets = self.tweets {
-            return tweets.count
+        if tweets != nil {
+            return tweets!.count
+        } else {
+            return 0
         }
-        return 0
-        
     }
     
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetsTableViewCell", forIndexPath: indexPath) as! TweetsTableViewCell
         cell.tweet = tweets![indexPath.row]
-        cell.time.text = tweets![indexPath.row].Time!
-        //cell.userHandle.text = tweets![indexPath.row].user!.screenname!
-        
-        
         return cell
     }
     
+    @IBAction func onLogout(sender: UIBarButtonItem) {
+        if(User.currentUser != nil) {
+            User.currentUser!.logout()
+        }else{
+        self.dismissViewControllerAnimated(true, completion: nil)
+        }
+       
+
+    }
+    
+//    @IBAction func onLogout(sender: AnyObject) {
+//        if(User.currentUser != nil) {
+//            User.currentUser!.logout()
+//        }
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
+
+
     
     
+    //pass data to "DetailsViewController"
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        
+        if (segue.identifier == "fromCellToDetailsPage") {
+            
+            let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
+            let tweeted = tweets![indexPath!.row]
+            let detailTweetViewController = segue.destinationViewController as! TweetsDetailViewController
+            detailTweetViewController.detailTweet = tweeted
+            
+        }
+        
+        
+    }
     
     /*
     // MARK: - Navigation
