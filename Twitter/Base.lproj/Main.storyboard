@@ -117,7 +117,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSp-cF-aQE" userLabel="Like Button">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSp-cF-aQE" userLabel="Like Button">
                                                     <rect key="frame" x="219" y="98" width="16" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="16" id="1uD-IG-aoh"/>
@@ -142,7 +142,7 @@
                                                         <segue destination="Dqx-RK-Lyq" kind="modal" id="PJc-Qa-CZn"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdz-Jf-vTW" userLabel="Likes Count Label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdz-Jf-vTW" userLabel="Likes Count Label">
                                                     <rect key="frame" x="243" y="98" width="71" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -402,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01D-D4-Y7I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2136.5" y="273.5"/>
+            <point key="canvasLocation" x="2134.5" y="237.5"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="UXV-8b-QFN">
@@ -653,7 +653,7 @@
         <image name="retweet-action-on" width="16" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IaK-Gv-gB9"/>
+        <segue reference="PJc-Qa-CZn"/>
         <segue reference="zve-6g-mAz"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.46055554961758194" green="0.52428639473586269" blue="1" alpha="1" colorSpace="calibratedRGB"/>
